@@ -1,0 +1,22 @@
+services:
+  api:
+    # Build context is the repo root: the model lives in /models, and Docker
+    # can only COPY files from within the build context.
+    build:
+      context: ../..
+      dockerfile: code/deployment/api/Dockerfile
+    ports:
+      - "8000:8000"
+
+  app:
+    build:
+      context: ../..
+      dockerfile: code/deployment/app/Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+    # Service name "api" is the hostname of the API container inside the
+    # compose network.
+      API_URL: http://api:8000
+    depends_on:
+      - api
