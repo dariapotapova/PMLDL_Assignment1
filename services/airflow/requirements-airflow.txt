@@ -1,0 +1,7 @@
+# Versions MUST match code/deployment/api/requirements.txt:
+# the model pickle is trained in THIS image and served in the API image.
+pandas==2.3.3
+numpy==2.5.2
+scikit-learn==1.9.0
+mlflow==3.16.0
+psycopg2-binary
