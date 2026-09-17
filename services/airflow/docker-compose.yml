@@ -11,7 +11,7 @@ services:
   
   mlflow-ui:
     build: .
-    command: mlflow ui --backend-store-uri sqlite:////repo/mlruns/mlflow.db --host 0.0.0.0
+    entrypoint: ["mlflow", "ui", "--backend-store-uri", "sqlite:////repo/mlruns/mlflow.db", "--host", "0.0.0.0"]
     ports:
       - "5000:5000"
     volumes:
